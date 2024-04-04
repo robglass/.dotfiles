@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+alias vim="$VIM"
+alias work="cd ~/Developer/work"
+
