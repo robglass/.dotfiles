@@ -2,3 +2,4 @@
 alias vim="$VIM"
 alias work="cd ~/Developer/work"
 
+alias dotFileInstall="$DOTFILES/install"
