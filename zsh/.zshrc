@@ -106,3 +106,6 @@ eval "$(rbenv init -)"
 eval "$(starship init zsh)"
 SPACESHIP_PROMPT_ASYNC=FALSE
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
