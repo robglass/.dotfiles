@@ -3,4 +3,3 @@ alias vim="$VIM"
 alias work="cd ~/Developer/work"
 
 alias dotFileInstall="$DOTFILES/install"
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/robglass/remap.lua<cr>")
