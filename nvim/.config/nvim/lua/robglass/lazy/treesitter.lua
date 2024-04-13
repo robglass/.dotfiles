@@ -7,12 +7,17 @@ return {
             ensure_installed = {
                 "vimdoc",
                 "json",
+                "javascript",
+                "typescript",
                 "markdown",
                 "markdown_inline",
                 "lua",
                 "rust",
                 "gitignore",
                 "swift",
+                "jsdoc",
+                "bash",
+                "go",
             },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -42,7 +47,7 @@ return {
         treesitter_parser_config.templ = {
             install_info = {
                 url = "https://github.com/vrischmann/tree-sitter-templ.git",
-                files = {"src/parser.c", "src/scanner.c"},
+                files = { "src/parser.c", "src/scanner.c" },
                 branch = "master",
             },
         }
