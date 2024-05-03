@@ -1,8 +1,7 @@
 #!/usr/bin/env zsh
-export STOW_FOLDERS="bin,nvim,tmux,personal,zsh,skhd"
+export STOW_FOLDERS="bin,nvim,tmux,personal,zsh,skhd,alacritty"
 
 addToPath() {
-                vim.keymap.set("n", "<leader>rn", vim.diagnostic.goto_next, { buffer = bufnr })
     if [[ "$PATH" != *"$1"* ]]; then
         export PATH=$PATH:$1
     fi
