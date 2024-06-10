@@ -1,3 +1,4 @@
+
 live_config_reload = true
 
 [env]
@@ -7,10 +8,11 @@ TERM = "xterm-256color"
 decorations = "buttonless"
 dynamic_padding = false
 opacity = 0.9
+blur = false
 
 [window.padding]
-x = 25 
-y = 25
+x = 5 
+y = 10
 
 [font]
 size = 20.0
@@ -30,3 +32,8 @@ style = "Medium Italic"
 [font.normal]
 family = "JetBrainsMono Nerd Font"
 style = "Medium"
+
+
+[scrolling]
+history_size = 10000
+multiplier = 3
