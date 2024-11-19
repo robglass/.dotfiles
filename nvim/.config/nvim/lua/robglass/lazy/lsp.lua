@@ -1,6 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -30,6 +30,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "tsserver",
+                "sourcekit",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -78,10 +79,26 @@ return {
 
         local lspconfig = require("lspconfig")
         lspconfig["sourcekit"].setup({
-            capabilities = capabilities,
+            capabilities = {
+                workspace = {
+                    didChangeConfiguration = {
+                        dynamicRegistration = true,
+                    },
+                },
+            },
             on_attach = function(client, bufnr)
-                vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { buffer = bufnr })
-                vim.keymap.set("n", "<leader>d", vim.diagnostic.hover, { buffer = bufnr })
+                vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>gw", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>[g", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "<leader>]g", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", { buffer = bufnr })
             end,
         })
 
