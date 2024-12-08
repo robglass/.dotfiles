@@ -1,48 +1,30 @@
-function ColorMyPencils(color)
-    color = color or "rose-pine"
-    vim.cmd.colorscheme(color)
-
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
 return {
-    {
-        "folke/tokyonight.nvim",
-        config = function()
-            require("tokyonight").setup({
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                style = "storm",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-                transparent = true,     -- Enable this to disable setting the background color
-                terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-                styles = {
-                    -- Style to be applied to different syntax groups
-                    -- Value is any valid attr-list value for `:help nvim_set_hl`
-                    comments = { italic = false },
-                    keywords = { italic = false },
-                    -- Background styles. Can be "dark", "transparent" or "normal"
-                    sidebars = "dark", -- style for sidebars, see below
-                    floats = "dark",   -- style for floating windows
-                },
-            })
-        end
-    },
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    proirity = 1000,
+    config = function()
+        require("catppuccin").setup({
+            flavor = "mocha",
+            transparent_background = false,
+            dim_inactive = {
+                enabled = false,
+                shade = "light",
+                percentage = 0.9,
+            },
+            custom_hightlights = function(colors)
+                local searchActive = { bg = colors.red, fg = "#181825" }
+                local searchInactive = { bg = colors.peach, fg = "#000000" }
+                return {
+                    CursorLineNr = { fg = colors.flamingo },
+                    Search = searchInactive,
+                    IncSearch = searchActive,
+                    EndOfBuffer = { fg = colors.flamingo },
+                    WinSeperator = { fg = colors.surface0, bg = colors.surface0 },
+                }
+            end,
+        })
 
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        config = function()
-            require('rose-pine').setup({
-                disable_background = true,
-            })
-
-            vim.cmd("colorscheme rose-pine")
-
-            ColorMyPencils()
-        end
-    },
-
-
+        vim.cmd([[colorscheme catppuccin]])
+    end
 }
-

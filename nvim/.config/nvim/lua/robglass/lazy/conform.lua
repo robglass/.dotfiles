@@ -7,6 +7,7 @@ return {
         conform.setup({
             formatters_by_ft = {
                 swift = { "swiftformat" },
+                python = { "isort", "black" },
             },
             format_on_save = function()
                 return { timeout_ms = 500, lsp_fallback = true }
