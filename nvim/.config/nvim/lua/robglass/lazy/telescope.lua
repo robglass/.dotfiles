@@ -4,7 +4,8 @@ return {
     tag = "0.1.5",
 
     dependencies = {
-        "nvim-lua/plenary.nvim"
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope-live-grep-args.nvim",
     },
 
     config = function()
@@ -28,5 +29,9 @@ return {
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+
+        vim.keymap.set('n', '<leader>gc', function()
+            require('telescope-live-grep-args.shortcust').grep_word_under_cursor({ postfix = ' --hidden' })
+        end)
     end
 }

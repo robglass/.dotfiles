@@ -30,7 +30,6 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "tsserver",
-                "sourcekit",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -78,7 +77,7 @@ return {
         })
 
         local lspconfig = require("lspconfig")
-        lspconfig["sourcekit"].setup({
+        lspconfig.sourcekit.setup({
             capabilities = {
                 workspace = {
                     didChangeConfiguration = {
@@ -86,10 +85,10 @@ return {
                     },
                 },
             },
-            on_attach = function(client, bufnr)
+            on_attach = function(_, bufnr)
                 vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
                 vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr })
-                vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { buffer = bufnr })
+                vim.keymap.set("n", "U<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { buffer = bufnr })
                 vim.keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", { buffer = bufnr })
                 vim.keymap.set("n", "<leader>gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { buffer = bufnr })
                 vim.keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { buffer = bufnr })
