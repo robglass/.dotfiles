@@ -71,7 +71,19 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    aliases
+    brew
+    common-aliases
+    git
+    gitignore
+    dotenv
+    jira
+    macos
+    swiftpm
+    tmux
+    xcode
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,3 +126,5 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH=$PATH:$HOME/go/bin
+
+alias sloc="cloc  --exclude-dir=Pods,Carthage,Frameworks,generated,.idea,output,DerivedData,Fastlane,.\*.xcodeproj,.\*.xcworkspace --include-ext=swift"
