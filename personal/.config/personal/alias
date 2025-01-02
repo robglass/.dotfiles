@@ -3,3 +3,6 @@ alias vim="$VIM"
 alias work="cd ~/Developer/work"
 
 alias dotFileInstall="$DOTFILES/install"
+
+# Swift Lines of Code
+alias sloc="cloc  --exclude-dir=Pods,Carthage,Frameworks,generated,.idea,output,DerivedData,Fastlane,.\*.xcodeproj,.\*.xcworkspace --include-ext=swift"
